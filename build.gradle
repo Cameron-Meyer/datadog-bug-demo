@@ -25,13 +25,14 @@ tasks.register('copyAgentToLibs', Copy) {
 
 tasks.withType(Test).configureEach {
     dependsOn("copyAgentToLibs")
-    environment("DD_API_KEY", System.getenv("DD_API_KEY"))
-    environment("DD_APPLICATION_KEY", System.getenv("DD_APPLICATION_KEY"))
-    environment("DD_SITE", "us5.datadoghq.com")
+    environment("DD_API_KEY", "FAKE")
+    environment("DD_APPLICATION_KEY", "KEY")
     jvmArgs("-javaagent:${copyAgentToLibs.destinationDir.toPath().toString() + File.separator}java-tracing-agent.jar="
             + "dd.civisibility.enabled=true"
             + ",dd.civisibility.agentless.enabled=true"
             + ",dd.service=my-java-app"
+            + ",dd.site=us5.datadoghq.com"
+            + ",dd.env=ci"
     )
 }
 
@@ -40,7 +41,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
-    tracingAgent "com.datadoghq:dd-java-agent:1.20.1"
+    tracingAgent "com.datadoghq:dd-java-agent:1.22.0"
 }
 
 testing.suites {
