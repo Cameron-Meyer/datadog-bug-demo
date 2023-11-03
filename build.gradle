@@ -1,0 +1,67 @@
+plugins {
+    id("java")
+    id("jacoco")
+    id("jvm-test-suite")
+}
+
+group = "org.datadog.issue"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    tracingAgent
+    tracingAgent.transitive = false
+}
+
+tasks.register('copyAgentToLibs', Copy) {
+    from configurations.tracingAgent
+    into jar.destinationDirectory
+    rename { "java-tracing-agent.jar" }
+}
+
+
+tasks.withType(Test).configureEach {
+    dependsOn("copyAgentToLibs")
+    environment("DD_API_KEY", System.getenv("DD_API_KEY"))
+    environment("DD_APPLICATION_KEY", System.getenv("DD_APPLICATION_KEY"))
+    environment("DD_SITE", "us5.datadoghq.com")
+    jvmArgs("-javaagent:${copyAgentToLibs.destinationDir.toPath().toString() + File.separator}java-tracing-agent.jar="
+            + "dd.civisibility.enabled=true"
+            + ",dd.civisibility.agentless.enabled=true"
+            + ",dd.service=my-java-app"
+    )
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add('-Xplugin:DatadogCompilerPlugin')
+}
+
+dependencies {
+    tracingAgent "com.datadoghq:dd-java-agent:1.20.1"
+}
+
+testing.suites {
+    functionalTest(JvmTestSuite) {
+        sources {
+            resources {
+                srcDirs sourceSets.functionalTest.java.srcDirs
+                exclude "**/*.java"
+            }
+        }
+        dependencies {
+            implementation "com.intuit.karate:karate-junit5:1.4.1"
+            implementation "com.datadoghq:dd-javac-plugin-client:0.1.7"
+            annotationProcessor "com.datadoghq:dd-javac-plugin:0.1.7"
+        }
+        targets.all {
+            testTask.configure {
+                outputs.upToDateWhen { false }
+                jacoco.enabled = false
+                systemProperties = System.properties
+            }
+        }
+    }
+}
