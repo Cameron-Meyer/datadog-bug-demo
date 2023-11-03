@@ -1,17 +1,17 @@
-23:18:14.766 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:14.774 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
-23:18:14.775 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:14.775 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]
-23:18:14.824 [Test worker] TRACE com.intuit.karate.Suite - file not found: classpath:karate-base.js - not found: karate-base.js
-23:18:14.825 [Test worker] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
-23:18:14.856 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
-23:18:16.385 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 16 with tags effective: [withSetup]
-23:18:16.389 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - matched scenario at line: 23 with tags effective: [withSetupOnce]
-23:18:16.398 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@67e1a5fd
-23:18:16.499 [Test worker] TRACE com.intuit.karate - setupOnce waiting for lock: null
-23:18:16.499 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
-23:18:16.505 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@5d373794
-23:18:16.681 [Test worker] ERROR com.intuit.karate - scenario [run] failed
+23:43:12.698 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:12.710 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
+23:43:12.711 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:12.711 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]
+23:43:12.752 [Test worker] TRACE com.intuit.karate.Suite - file not found: classpath:karate-base.js - not found: karate-base.js
+23:43:12.752 [Test worker] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+23:43:12.786 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
+23:43:14.288 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 16 with tags effective: [withSetup]
+23:43:14.289 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - matched scenario at line: 23 with tags effective: [withSetupOnce]
+23:43:14.297 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@1734b1a
+23:43:14.389 [Test worker] TRACE com.intuit.karate - setupOnce waiting for lock: null
+23:43:14.389 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
+23:43:14.394 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@178ebac3
+23:43:14.526 [Test worker] ERROR com.intuit.karate - scenario [run] failed
 java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTestSuiteImpl.testStart(String, java.lang.reflect.Method, java.lang.Long)" because "testSuite" is null
 	at datadog.trace.civisibility.events.TestEventsHandlerImpl.onTestStart(TestEventsHandlerImpl.java:151)
 	at datadog.trace.instrumentation.karate.KarateTracingHook.beforeScenario(KarateTracingHook.java:86)
@@ -25,9 +25,9 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at java.base/java.util.stream.ReferencePipeline.reduce(ReferencePipeline.java:657)
 	at com.intuit.karate.core.ScenarioRuntime.beforeRun(ScenarioRuntime.java:376)
 	at com.intuit.karate.core.ScenarioRuntime.run(ScenarioRuntime.java:390)
-	at com.intuit.karate.core.ScenarioBridge.setupInternal(ScenarioBridge.java:810)
-	at com.intuit.karate.core.ScenarioBridge.setupOnce(ScenarioBridge.java:836)
-	at com.intuit.karate.core.ScenarioBridge.setupOnce(ScenarioBridge.java:817)
+	at com.intuit.karate.core.ScenarioBridge.setupInternal(ScenarioBridge.java:805)
+	at com.intuit.karate.core.ScenarioBridge.setupOnce(ScenarioBridge.java:831)
+	at com.intuit.karate.core.ScenarioBridge.setupOnce(ScenarioBridge.java:812)
 	at com.oracle.truffle.host.HostMethodDesc$SingleMethod$MHBase.invokeHandle(HostMethodDesc.java:350)
 	at com.oracle.truffle.host.GuestToHostCodeCache$1.executeImpl(GuestToHostCodeCache.java:96)
 	at com.oracle.truffle.host.GuestToHostRootNode.execute(GuestToHostRootNode.java:80)
@@ -68,7 +68,7 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at org.graalvm.polyglot.Context.eval(Context.java:425)
 	at com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:169)
 	at com.intuit.karate.graal.JsEngine.eval(JsEngine.java:165)
-	at com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1286)
+	at com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1199)
 	at com.intuit.karate.core.ScenarioIterator.tryAdvance(ScenarioIterator.java:104)
 	at com.intuit.karate.core.ScenarioIterator.tryAdvance(ScenarioIterator.java:88)
 	at com.intuit.karate.core.ScenarioIterator.tryAdvance(ScenarioIterator.java:97)
@@ -119,12 +119,11 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
 	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
 	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
 	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
 	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
 	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
@@ -151,23 +150,23 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-23:18:16.704 [Test worker] ERROR c.intuit.karate.core.FeatureRuntime - classpath:buggy/DisplayTheBug.feature[3:23] dynamic expression evaluation failed: karate.setupOnce().data
-23:18:17.425 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:17.426 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
-23:18:17.426 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:17.426 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]
-23:18:17.896 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:17.896 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
-23:18:17.896 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:17.896 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]
-23:18:17.897 [Test worker] TRACE com.intuit.karate.Suite - file not found: classpath:karate-base.js - not found: karate-base.js
-23:18:17.897 [Test worker] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
-23:18:17.898 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
-23:18:17.899 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - matched scenario at line: 16 with tags effective: [withSetup]
-23:18:17.904 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@5246453e
-23:18:17.906 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
-23:18:17.911 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@33aa4326
-23:18:17.913 [Test worker] ERROR com.intuit.karate - scenario [run] failed
+23:43:14.545 [Test worker] ERROR c.intuit.karate.core.FeatureRuntime - classpath:DisplayTheBug.feature[3:23] dynamic expression evaluation failed: karate.setupOnce().data
+23:43:15.395 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:15.396 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
+23:43:15.396 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:15.396 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]
+23:43:15.837 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:15.838 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
+23:43:15.838 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:15.839 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]
+23:43:15.839 [Test worker] TRACE com.intuit.karate.Suite - file not found: classpath:karate-base.js - not found: karate-base.js
+23:43:15.840 [Test worker] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+23:43:15.840 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
+23:43:15.842 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - matched scenario at line: 16 with tags effective: [withSetup]
+23:43:15.847 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@507e3e77
+23:43:15.849 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 4 with tags effective: [setup]
+23:43:15.852 [Test worker] TRACE com.intuit.karate - js context: org.graalvm.polyglot.Context@368e7d3a
+23:43:15.854 [Test worker] ERROR com.intuit.karate - scenario [run] failed
 java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTestSuiteImpl.testStart(String, java.lang.reflect.Method, java.lang.Long)" because "testSuite" is null
 	at datadog.trace.civisibility.events.TestEventsHandlerImpl.onTestStart(TestEventsHandlerImpl.java:151)
 	at datadog.trace.instrumentation.karate.KarateTracingHook.beforeScenario(KarateTracingHook.java:86)
@@ -181,9 +180,9 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at java.base/java.util.stream.ReferencePipeline.reduce(ReferencePipeline.java:657)
 	at com.intuit.karate.core.ScenarioRuntime.beforeRun(ScenarioRuntime.java:376)
 	at com.intuit.karate.core.ScenarioRuntime.run(ScenarioRuntime.java:390)
-	at com.intuit.karate.core.ScenarioBridge.setupInternal(ScenarioBridge.java:810)
-	at com.intuit.karate.core.ScenarioBridge.setup(ScenarioBridge.java:793)
-	at com.intuit.karate.core.ScenarioBridge.setup(ScenarioBridge.java:789)
+	at com.intuit.karate.core.ScenarioBridge.setupInternal(ScenarioBridge.java:805)
+	at com.intuit.karate.core.ScenarioBridge.setup(ScenarioBridge.java:788)
+	at com.intuit.karate.core.ScenarioBridge.setup(ScenarioBridge.java:784)
 	at com.oracle.truffle.host.HostMethodDesc$SingleMethod$MHBase.invokeHandle(HostMethodDesc.java:350)
 	at com.oracle.truffle.host.GuestToHostCodeCache$1.executeImpl(GuestToHostCodeCache.java:96)
 	at com.oracle.truffle.host.GuestToHostRootNode.execute(GuestToHostRootNode.java:80)
@@ -224,7 +223,7 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at org.graalvm.polyglot.Context.eval(Context.java:425)
 	at com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:169)
 	at com.intuit.karate.graal.JsEngine.eval(JsEngine.java:165)
-	at com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1286)
+	at com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1199)
 	at com.intuit.karate.core.ScenarioIterator.tryAdvance(ScenarioIterator.java:104)
 	at com.intuit.karate.core.ScenarioIterator.tryAdvance(ScenarioIterator.java:88)
 	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.lambda$initPartialTraversalState$0(StreamSpliterators.java:292)
@@ -273,12 +272,11 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
 	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
 	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
 	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
 	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
 	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
@@ -305,9 +303,9 @@ java.lang.NullPointerException: Cannot invoke "datadog.trace.civisibility.DDTest
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-23:18:17.918 [Test worker] ERROR c.intuit.karate.core.FeatureRuntime - classpath:buggy/DisplayTheBug.feature[2:16] dynamic expression evaluation failed: karate.setup().data
-23:18:17.923 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 23 with tags effective: [withSetupOnce]
-23:18:17.991 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:17.991 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
-23:18:17.991 [Test worker] TRACE c.intuit.karate.core.FeatureParser - outline steps: [* print raB]
-23:18:17.991 [Test worker] TRACE c.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]
+23:43:15.860 [Test worker] ERROR c.intuit.karate.core.FeatureRuntime - classpath:DisplayTheBug.feature[2:16] dynamic expression evaluation failed: karate.setup().data
+23:43:15.865 [Test worker] TRACE c.intuit.karate.core.FeatureRuntime - skipping scenario at line: 23 with tags effective: [withSetupOnce]
+23:43:15.961 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:15.962 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setup().data]]
+23:43:15.962 [Test worker] TRACE com.intuit.karate.core.FeatureParser - outline steps: [* print raB]
+23:43:15.962 [Test worker] TRACE com.intuit.karate.core.FeatureParser - example rows: [[karate.setupOnce().data]]

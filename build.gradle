@@ -22,7 +22,6 @@ tasks.register('copyAgentToLibs', Copy) {
     rename { "java-tracing-agent.jar" }
 }
 
-
 tasks.withType(Test).configureEach {
     dependsOn("copyAgentToLibs")
     environment("DD_API_KEY", "FAKE")
@@ -36,33 +35,21 @@ tasks.withType(Test).configureEach {
     )
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs.add('-Xplugin:DatadogCompilerPlugin')
-}
-
 dependencies {
     tracingAgent "com.datadoghq:dd-java-agent:1.22.0"
+
+    testImplementation "com.intuit.karate:karate-junit5:1.4.0"
+    implementation "com.datadoghq:dd-javac-plugin-client:0.1.7"
+    annotationProcessor "com.datadoghq:dd-javac-plugin:0.1.7"
+    testAnnotationProcessor "com.datadoghq:dd-javac-plugin:0.1.7"
 }
 
-testing.suites {
-    functionalTest(JvmTestSuite) {
-        sources {
-            resources {
-                srcDirs sourceSets.functionalTest.java.srcDirs
-                exclude "**/*.java"
-            }
-        }
-        dependencies {
-            implementation "com.intuit.karate:karate-junit5:1.4.1"
-            implementation "com.datadoghq:dd-javac-plugin-client:0.1.7"
-            annotationProcessor "com.datadoghq:dd-javac-plugin:0.1.7"
-        }
-        targets.all {
-            testTask.configure {
-                outputs.upToDateWhen { false }
-                jacoco.enabled = false
-                systemProperties = System.properties
-            }
-        }
-    }
+test {
+    useJUnitPlatform()
+    jacoco.enabled = false
+    outputs.upToDateWhen { false }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add('-Xplugin:DatadogCompilerPlugin')
 }
